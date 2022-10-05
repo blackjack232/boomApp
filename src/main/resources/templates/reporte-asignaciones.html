@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reporte Asignaciones</title>
+    <style>
+        .table-header {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table-header td {
+            padding: 8px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th {
+            padding: 12px 8px;
+            text-align: left;
+            background-color: #f1a003;
+            color: white;
+        }
+
+        .table th:first-child {
+            border-radius: 5px 0 0 0 !important;
+        }
+
+        .table th:last-child {
+            border-radius: 0 5px 0 0 !important;
+        }
+
+        .table td {
+            border-bottom: 1px solid #5e5e5e;
+            padding: 8px;
+        }
+
+        .divider {
+            margin: 2em 0;
+        }
+
+        .center-img {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <table class="table-header">
+            <caption></caption>
+            <tr>
+                <th rowspan="4" width="30%">
+                    <img alt="logo.png" th:src="@{classpath:static/img/logo.png}" src="../static/img/logo.png"
+                        width="150" height="150" class="center-img" />
+                </th>
+                <td colspan="4">
+                    <span style="font-size: 30px; font-weight: bold; margin: 5px 0;">Reporte Bombillo Amarillo</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span style="font-size: 25px; font-weight: bold;">Proyecto: </span>
+                    <span th:text="${proyecto}" style="font-size: 25px; font-weight: 400;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span style="font-size: 20px; font-weight: bold;">Etapa: </span>
+                    <span th:text="${etapa}" style="font-size: 20px; font-weight: 400;"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span style="font-size: 18px; font-weight: bold;">Fecha creación: </span>
+                    <span th:text="${fechaCreacion}" style="font-size: 18px; font-weight: 400;"></span>
+                </td>
+                <td>
+                    <span style="font-size: 18px; font-weight: bold;">Progreso etapa: </span>
+                    <span th:text="${progreso}" style="font-size: 18px; font-weight: 400;"></span>
+                </td>
+            </tr>
+        </table>
+
+        <div class="divider"></div>
+
+        <table class="table">
+            <caption></caption>
+            <tr>
+                <th>Responsable</th>
+                <th>Tarea</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+                <th>Estado</th>
+            </tr>
+            <tr th:each="asignacion: ${asignaciones}">
+                <td th:text="${asignacion.responsible}"></td>
+                <td th:text="${asignacion.task}"></td>
+                <td th:text="${asignacion.startDate}"></td>
+                <td th:text="${asignacion.endDate}"></td>
+                <td th:text="${asignacion.status}"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

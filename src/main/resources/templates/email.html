@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email</title>
+    <style>
+        .text-header {
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: bolder;
+        }
+
+        .text-body {
+            font-size: 18px;
+        }
+
+        .text-footer {
+            font-size: 18px;
+        }
+
+        .text-pass {
+            width: 100% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        .text-pass span {
+            font-size: 28px;
+            font-weight: bolder;
+            padding: 10px 20px;
+            margin: 5px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <p class="text-header">
+            Señor(a): <strong><span th:text="${data.names}"></span> <span th:text="${data.lastnames}"></span></strong>,
+        </p>
+
+        <p class="text-body">La constraseña para poder acceder al aplicativo es:</p>
+
+        <p class="text-pass">
+            <span th:text="${pass}"></span>
+        </p>
+
+        <p class="text-footer">Gracias por utilizar nuestros servicios.</p>
+    </section>
+</body>
+
+</html>
